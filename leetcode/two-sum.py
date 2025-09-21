@@ -1,10 +1,16 @@
-class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
-        my_dict = {}
-        for i in range(len(nums)):
-            if (target - nums[i]) in my_dict:
-                return [my_dict[target - nums[i]], i]
-            else:
-                my_dict[nums[i]] = i
-                print("hi")
-        return
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> pairIdx;
+
+        for (int i = 0; i < nums.size(); ++i) {
+            int num = nums[i];
+            if (pairIdx.find(target - num) != pairIdx.end()) {
+                return {i, pairIdx[target - num]};
+            }
+            pairIdx[num] = i;
+        }
+
+        return {};        
+    }
+};
